@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: API_URL,
+        target: "https://pyrite-inexpensive-saltasaurus.glitch.me",
         changeOrigin: true,
         secure: false,
       },
