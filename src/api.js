@@ -1,3 +1,3 @@
-const API_URL = process.env.NODE_ENV === "development" ? "" : process.env.BACK;
+const API_URL = "https://pyrite-inexpensive-saltasaurus.glitch.me";
 
 export { API_URL };
