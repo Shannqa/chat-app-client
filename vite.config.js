@@ -7,7 +7,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://pyrite-inexpensive-saltasaurus.glitch.me",
+        target: "https://chat-app-server-i6o1.onrender.com",
         changeOrigin: true,
         secure: false,
       },
