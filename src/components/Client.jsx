@@ -30,6 +30,22 @@ function Client() {
   } = useContext(AppContext);
 
   const storageToken = localStorage.getItem("accessToken");
+
+  useEffect(() => {
+    // on refreshing the page, fix a bug caused by connection response event arriving too early
+    if (users.length === 0) {
+      socket.emit("refresh", { socketId: socket.id });
+    }
+  }, []);
+
+  useEffect(() => {
+    socket.on("refreshResponse", ({ name, text, users }) => {
+      setAllTab([...allTab, { name: name, text: text }]);
+      setUsers(users);
+      console.log("refresh response", users);
+    });
+  }, []);
+
   useEffect(() => {
     socket.on("publicMessageResponse", ({ name, socketId, text }) => {
       setAllTab([...allTab, { name: name, text: text }]);
@@ -118,6 +134,10 @@ function Client() {
     socket.on("disconnectResponse", ({ name, text, users }) => {
       setAllTab([...allTab, { name: name, text: text }]);
       setUsers(users);
+    });
+
+    socket.on("connect_error", (err) => {
+      console.log(err);
     });
   }, [socket, allTab, users, openTabs]);
 

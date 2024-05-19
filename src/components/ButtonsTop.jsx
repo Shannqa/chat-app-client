@@ -27,11 +27,17 @@ function ButtonsTop() {
 
   return (
     <div className="chat-buttons-top">
-      <button className="button" onClick={(e) => handleContacts()}>
-        Contacts
-      </button>
-      <button className="button" onClick={(e) => handleRooms()}>
+      <button
+        className={userListTab === "Rooms" ? "button target" : "button"}
+        onClick={(e) => handleRooms()}
+      >
         Rooms
+      </button>
+      <button
+        className={userListTab === "Contacts" ? "button target" : "button"}
+        onClick={(e) => handleContacts()}
+      >
+        Contacts
       </button>
     </div>
   );

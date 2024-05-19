@@ -38,6 +38,7 @@ function Login() {
   }
   // log in
   function handleSubmit(e) {
+    debugger;
     e.preventDefault();
     const nameCheck = checkUsername();
     const passCheck = checkPassword();
