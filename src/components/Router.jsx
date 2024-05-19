@@ -37,10 +37,6 @@ function Router() {
           path: "/account",
           element: <Account />,
         },
-        {
-          path: "/chat",
-          element: <Client />,
-        },
       ],
     },
   ]);
